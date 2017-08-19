@@ -1,1 +1,3 @@
-"use strict";let str = 'Hello';alert(str);
+"use strict";
+let str = 'Hello';
+alert(str);
