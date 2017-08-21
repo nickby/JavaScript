@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://js.cx/test/libs.js"></script>
+    <script src="test.js"></script>
+</head>
+<body>
+
+<script>
+    "use strict";
+
+    /**
+     * Get decimal part
+     * @param rawNumber
+     * @return {number}
+     */
+    function getDecimal(rawNumber) {
+        let str = rawNumber + "";
+        let position = str.indexOf('.');
+
+        if (position === -1) return 0;
+        return +str.slice(position);
+    }
+
+</script>
+
+</body>
+</html>
