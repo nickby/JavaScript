@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    "use strict";
+
+    /**
+     * Create full duplicate of input param (Object/Array/Primitive)
+     * @param oldObj
+     * @returns {*}
+     */
+    function clone(oldObj) {
+        let newObj;
+
+        if (typeof oldObj === 'object' && oldObj) {
+            newObj = Array.isArray(oldObj) ? [] : {};
+        } else {
+            return oldObj;
+        }
+
+        for (let key in oldObj) {
+            if (typeof oldObj[key] === 'object' && oldObj[key]) {
+                newObj[key] = clone(oldObj[key]);
+            } else {
+                newObj[key] = oldObj[key];
+            }
+        }
+        return newObj;
+    }
+
+
+    let address = {
+        country: 'Russia',
+        city: 'Moscow',
+        street: 'Pushkina',
+        phone: {code: '+7', number: '111-222'}
+    };
+    let user1 = {
+        name: 'John',
+        age: 25,
+        email: 'j@tam.com',
+        address: address,
+        login: null,
+        marks: [5, 5, 4, {literature: 3}],
+    };
+
+    let user2 = clone(user1);
+
+    user1.age += 15;
+    user1.address.city = 'Kursk';
+    user1.marks.push(3);
+    user1.marks.push({math: 4});
+
+    user2.address.phone.number = '555-888';
+    user2.marks[3].literature = 5;
+
+    console.log(user1);
+    console.log(user2);
+
+
+</script>
+
+
+</body>
+</html>
